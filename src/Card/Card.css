@@ -1,0 +1,37 @@
+.movie-card {
+  height: 445px;
+  position: relative;
+  width: 300px;
+}
+
+.c {
+  cursor: pointer;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 0;
+  width: 100%;
+  will-change: transform, opacity;
+}
+
+.front,
+.back {
+  background-size: cover;
+}
+
+.front {
+  background-color: white;
+}
+
+.back {
+  background-color: red;
+}
+
+/*.back {
+  background-image: url(https://images.unsplash.com/photo-1544511916-0148ccdeb877?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1901&q=80i&auto=format&fit=crop);
+}
+
+.front {
+  background-image: url(https://images.unsplash.com/photo-1540206395-68808572332f?ixlib=rb-1.2.1&w=1181&q=80&auto=format&fit=crop);
+}
+*/
