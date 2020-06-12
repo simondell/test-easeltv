@@ -30,7 +30,7 @@ export default function MovieCard (props: Props) {
   React.useEffect(() => {
     (async function readMovieMetaData () {
       const key = 'c624fbd1';
-      const path = `http://www.omdbapi.com/?apikey=${key}&i=${movie.imdbID}`;
+      const path = `https://www.omdbapi.com/?apikey=${key}&i=${movie.imdbID}`;
       try {
         setLoading(true);
         const response = await fetch(path);

@@ -23,7 +23,7 @@ export default () => {
 
       try {
         const key = 'c624fbd1';
-        const path = `http://www.omdbapi.com/?apikey=${key}&s=${term}&page=1&type=movie`;
+        const path = `https://www.omdbapi.com/?apikey=${key}&s=${term}&page=1&type=movie`;
         setLoading(true);
         setOMDB({});
         const response = await fetch(path);
