@@ -10,25 +10,32 @@ interface OMDB {
 }
 
 export default () => {
+  const [term, setTerm] = React.useState('')
   const [omdb, setOMDB] = React.useState({} as OMDB)
   const [loading, setLoading] = React.useState(false)
 
-  async function onTermClicked (term: string) {
-    const key = 'c624fbd1';
-    const path = `http://www.omdbapi.com/?apikey=${key}&s=${term}&page=1&type=movie`;
-    try {
-      setLoading(true);
-      setOMDB({});
-      const response = await fetch(path);
-      if(!response.ok) throw new Error("Whoops");
-      const body = await response.json();
-      setOMDB(body);
-      setLoading(false);
-    }
-    catch (err) {
-      console.error(err);
-    }
 
+
+  function onTermClicked (term: string) {
+    return async function (event: React.SyntheticEvent) {
+      event.preventDefault();
+      setTerm(term);
+
+      try {
+        const key = 'c624fbd1';
+        const path = `http://www.omdbapi.com/?apikey=${key}&s=${term}&page=1&type=movie`;
+        setLoading(true);
+        setOMDB({});
+        const response = await fetch(path);
+        if(!response.ok) throw new Error("Whoops");
+        const body = await response.json();
+        setOMDB(body);
+        setLoading(false);
+      }
+      catch (err) {
+        console.error(err);
+      }
+    }
   }
 
   return (
@@ -36,15 +43,15 @@ export default () => {
       <nav>
         <ol>
           {
-            ['star', 'road', 'pie'].map(term =>
+            ['star', 'road', 'pie'].map(searchTerm =>
               <li
-                key={`search-${term}`}
+                key={`search-${searchTerm}`}
               >
                 <a
-                  id={`${term}`}
-                  href={`#${term}`}
-                  onClick={() => onTermClicked(term)}
-                >{term}</a>
+                  className={term === searchTerm ? 'selected' : undefined}
+                  href={`?s=${searchTerm}`}
+                  onClick={onTermClicked(searchTerm)}
+                >{searchTerm}</a>
               </li>
             )
           }

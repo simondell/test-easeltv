@@ -43,6 +43,7 @@ nav a {
   text-decoration: none;
 }
 
+nav a.selected,
 nav a:target {
   background-color: rgba(100, 100, 240, 0.9);
   color: rgb(255, 255, 240);
