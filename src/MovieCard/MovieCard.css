@@ -15,31 +15,6 @@
   background-size: cover;
 }
 
-.card header {
-  align-items: flex-end;
-  display: flex;
-  height: 100px;
-  padding: var(--card-padding);
-}
-
-.card h2 {
-  font-size: 1.5em;
-  margin: 0;
-  text-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.4),
-    0 0 4px rgba(0,0,0,0.5)
-  ;
-}
-
-.card dl {
-  font-weight: 700;
-  padding: var(--card-padding);
-}
-
-.card * + dt {
-  margin-top: 1em;
-}
-
 .background,
 .foreground {
   position: absolute;
@@ -60,4 +35,33 @@
 
 .foreground {
   z-index: 2;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.card header {
+  align-items: flex-end;
+  display: flex;
+  height: 100px;
+  padding: var(--card-padding);
+}
+
+.card h2 {
+  font-size: 1.5em;
+  margin: 0;
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.4),
+    0 0 4px rgba(0,0,0,0.5)
+  ;
+}
+
+.card dl {
+  flex-grow: 1;
+  font-weight: 700;
+  padding: var(--card-padding);
+  overflow-y: scroll;
+}
+
+.card * + dt {
+  margin-top: 1em;
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import MovieCard, { Movie } from '../MovieCard/MovieCard'
-import Bar from '../Shared/LazyImage/bars-1s-200px.gif'
+import Loading from '../Shared/Loading/Loading'
 import './App.css'
 
 interface OMDB {
@@ -52,10 +52,7 @@ export default () => {
       </nav>
 
       {loading &&
-        <img
-          alt="loading..."
-          src={Bar}
-        />
+        <Loading />
       }
 
     	{omdb.Search &&
