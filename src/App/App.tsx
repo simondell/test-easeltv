@@ -1,33 +1,38 @@
 import React from 'react'
 import MovieCard, { Movie } from '../MovieCard/MovieCard'
+import Bar from '../Shared/LazyImage/bars-1s-200px.gif'
 import './App.css'
 
 interface OMDB {
-  Search: Movie[],
+  Search?: Movie[],
   totalResults?: "string";
   Response?: string;
 }
 
 export default () => {
-  const [omdb, setOMDB] = React.useState({ Search: [] })
+  const [omdb, setOMDB] = React.useState({} as OMDB)
+  const [loading, setLoading] = React.useState(false)
 
   async function onTermClicked (term: string) {
-    const key = 'c624fbd1'
-    const path = `http://www.omdbapi.com/?apikey=${key}&s=${term}&page=1&type=movie`
+    const key = 'c624fbd1';
+    const path = `http://www.omdbapi.com/?apikey=${key}&s=${term}&page=1&type=movie`;
     try {
-      const response = await fetch(path)
-      if(!response.ok) throw "Whoops"
-      const body = await response.json()
-      setOMDB(body)
+      setLoading(true);
+      setOMDB({});
+      const response = await fetch(path);
+      if(!response.ok) throw "Whoops";
+      const body = await response.json();
+      setOMDB(body);
+      setLoading(false);
     }
     catch (err) {
-      console.error(err)
+      console.error(err);
     }
 
   }
 
   return (
-    <div>
+    <main>
       <nav>
         <ol>
           {
@@ -45,18 +50,28 @@ export default () => {
           }
         </ol>
       </nav>
-    	<div
-        className="poster-wall"
-      >
-    	{
-    		omdb.Search.map((movie: Movie) =>
-    			<MovieCard
-            key={`movie-${movie.imdbID}`}
-            movie={movie}
-    			/>
-    		)
-    	}
-    	</div>
-    </div>
+
+      {loading &&
+        <img
+          alt="loading..."
+          src={Bar}
+        />
+      }
+
+    	{omdb.Search &&
+        <div
+          className="poster-wall"
+        >
+        {
+          omdb.Search.map((movie: Movie) =>
+            <MovieCard
+              key={`movie-${movie.imdbID}`}
+              movie={movie}
+            />
+          )
+        }
+      	</div>
+      }
+    </main>
   )
 }
