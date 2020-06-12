@@ -36,7 +36,6 @@ export default function MovieCard (props: Props) {
         const response = await fetch(path);
         if(!response.ok) throw new Error("Whoops");
         const body = await response.json();
-    console.log(body)
         setMetadata(body);
         setLoading(false);
       }
@@ -44,7 +43,7 @@ export default function MovieCard (props: Props) {
         console.error(err);
       }
     })()
-  }, [])
+  }, [movie.imdbID])
 
   return (
     <Card
