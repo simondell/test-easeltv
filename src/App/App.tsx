@@ -79,13 +79,18 @@ const omdb = {
   "Response": "True"
 }
 
-export default () =>
-	<div>
-	{
-		omdb.Search.map(movie =>
-			<MovieCard
-        movie={movie}
-			/>
-		)
-	}
-	</div>
+export default () => {
+  return (
+  	<div
+      className="poster-wall"
+    >
+  	{
+  		omdb.Search.map(movie =>
+  			<MovieCard
+          movie={movie}
+  			/>
+  		)
+  	}
+  	</div>
+  )
+}
