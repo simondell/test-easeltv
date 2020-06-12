@@ -9,20 +9,30 @@ interface Props {
 }
 
 export default function MovieCard (props: Props) {
+  const Poster =
+    <LazyImage
+      alt={props.title}
+      src={props.poster}
+    />
+
   return (
     <Card
-      back={
-        <LazyImage
-          alt={props.title}
-          src={props.poster}
-        />
-      }
+      back={Poster}
       front={
         <>{/* root elements, ugh! */}
-          <header>
-            <h2>{props.title}</h2>
-          </header>
-          <p>{props.poster}</p>
+          <div
+            className="foreground"
+          >
+            <header>
+              <h2>{props.title}</h2>
+            </header>
+            <p>{props.poster}</p>
+          </div>
+          <div
+            className="background"
+          >
+            {Poster}
+          </div>
         </>
       }
     />
