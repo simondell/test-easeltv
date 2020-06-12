@@ -8,6 +8,40 @@ body,
   background: #f0f0f0;
 }
 
+nav {
+  padding: 20px 0;
+}
+
+nav ol {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  justify-content: center;
+  list-style: none;
+}
+
+nav li {
+  padding: 0;
+  margin: 0;
+}
+
+nav li + li {
+  margin-left: 20px;
+}
+
+nav a {
+  border-radius: 4px;
+  padding:4px 8px;
+  background-color: rgba(100, 100, 240, 0.2);
+  color: rgba(100, 100, 240, 0.9);
+  text-decoration: none;
+}
+
+nav a:target {
+  background-color: rgba(100, 100, 240, 0.9);
+  color: rgb(255, 255, 240);
+}
+
 .poster-wall {
   align-items: center;
   display: grid;

@@ -3,7 +3,7 @@ import Card from '../Shared/Card/Card'
 import LazyImage from '../Shared/LazyImage/LazyImage'
 import './MovieCard.css'
 
-interface Movie {
+export interface Movie {
   "Title": string,
   "Year": string,
   "imdbID": string,
