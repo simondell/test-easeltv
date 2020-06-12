@@ -16,7 +16,7 @@ export default function Card(props: Props) {
     config: { mass: 5, tension: 500, friction: 80 }
   })
   return (
-    <div
+    <article
       className="movie-card"
       onClick={() => set(state => !state)}>
       <a.div 
@@ -38,9 +38,11 @@ export default function Card(props: Props) {
           transform: transform.interpolate(t => `${t} rotateX(180deg)`)
         }}
       >
-        <p>{props.title}</p>
+        <header>
+          <h2>{props.title}</h2>
+        </header>
         <p>{props.poster}</p>
       </a.div>
-    </div>
+    </article>
   )
 }
