@@ -1,0 +1,26 @@
+.card {
+  height: 445px;
+  width: 300px;
+}
+
+[class^="card__face--"] {
+  border-radius: 16px;
+}
+
+.card__face--front,
+.card__face--back {
+  background-size: cover;
+}
+
+.card header {
+  align-items: flex-end;
+  background-color: white;
+  display: flex;
+  height: 100px;
+  padding: 16px;
+}
+
+.card h2 {
+  font-size: 1.5em;
+  margin: 0;
+}

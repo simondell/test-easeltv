@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from '../Card/Card'
+import MovieCard from '../MovieCard/MovieCard'
 import './App.css'
 
 const omdb = {
@@ -83,7 +83,7 @@ export default () =>
 	<div>
 	{
 		omdb.Search.map(movie =>
-			<Card
+			<MovieCard
 				key={movie.imdbID}
 				poster={movie.Poster}
 				title={movie.Title}
