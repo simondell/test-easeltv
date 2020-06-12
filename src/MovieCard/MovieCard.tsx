@@ -3,16 +3,24 @@ import Card from '../Shared/Card/Card'
 import LazyImage from '../Shared/LazyImage/LazyImage'
 import './MovieCard.css'
 
+interface Movie {
+  "Title": string,
+  "Year": string,
+  "imdbID": string,
+  "Type": string,
+  "Poster": string;
+}
+
 interface Props {
-  poster: string,
-  title: string,
+  movie: Movie
 }
 
 export default function MovieCard (props: Props) {
+  const { movie } = props
   const Poster =
     <LazyImage
-      alt={props.title}
-      src={props.poster}
+      alt={movie.Title}
+      src={movie.Poster}
     />
 
   return (
@@ -24,9 +32,14 @@ export default function MovieCard (props: Props) {
             className="foreground"
           >
             <header>
-              <h2>{props.title}</h2>
+              <h2>{movie.Title}</h2>
             </header>
-            <p>{props.poster}</p>
+            <dl>
+              <dt>Released</dt>
+              <dd>{movie.Year}</dd>
+              <dt>Synopsis</dt>
+              <dd>{movie.Poster}</dd>
+            </dl>
           </div>
           <div
             className="background"

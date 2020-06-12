@@ -1,4 +1,7 @@
 .card {
+  --card-padding: 16px;
+
+  color: rgb(240, 240, 240);
   height: 445px;
   width: 300px;
 }
@@ -14,15 +17,27 @@
 
 .card header {
   align-items: flex-end;
-  background-color: white;
   display: flex;
   height: 100px;
-  padding: 16px;
+  padding: var(--card-padding);
 }
 
 .card h2 {
   font-size: 1.5em;
   margin: 0;
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.4),
+    0 0 4px rgba(0,0,0,0.5)
+  ;
+}
+
+.card dl {
+  font-weight: 700;
+  padding: var(--card-padding);
+}
+
+.card * + dt {
+  margin-top: 1em;
 }
 
 .background,
@@ -35,8 +50,12 @@
 }
 
 .background {
-  z-index: 1;
+  filter:
+    brightness(0.666)
+    blur(2px)
+  ;
   transform: scale(-1);
+  z-index: 1;
 }
 
 .foreground {

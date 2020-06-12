@@ -84,9 +84,7 @@ export default () =>
 	{
 		omdb.Search.map(movie =>
 			<MovieCard
-				key={movie.imdbID}
-				poster={movie.Poster}
-				title={movie.Title}
+        movie={movie}
 			/>
 		)
 	}
