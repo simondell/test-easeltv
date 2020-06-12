@@ -20,7 +20,7 @@ export default () => {
       setLoading(true);
       setOMDB({});
       const response = await fetch(path);
-      if(!response.ok) throw "Whoops";
+      if(!response.ok) throw new Error("Whoops");
       const body = await response.json();
       setOMDB(body);
       setLoading(false);
